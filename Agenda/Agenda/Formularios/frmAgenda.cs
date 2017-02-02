@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace CadastroDeCliente
 {
@@ -50,37 +51,9 @@ namespace CadastroDeCliente
             {
                 errErro.SetError(lblNome, "");
             }
-            using (SqlConnection con = new SqlConnection("Server=AME0510093W10-1\\SQLEXPRESS;Database=db_Agenda;Trusted_Connection=Yes;"))
-            {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO tb_DadosAgenda (NOME, CEP, ENDERECO, NUMEROCASA, BAIRRO, CIDADE, ESTADO, CELULAR) VALUES (@NOME, @CEP, @ENDERECO, @NUMEROCASA, @BAIRRO, @CIDADE, @ESTADO, @CELULAR)", con))
-                {
-                    cmd.Parameters.AddWithValue("NOME", txtNome.Text);
-                    cmd.Parameters.AddWithValue("CEP", mskCEP.Text);
-                    cmd.Parameters.AddWithValue("ENDERECO", txtEndereco.Text);
-                    cmd.Parameters.AddWithValue("NUMEROCASA", txtNumeroCasa.Text);
-                    cmd.Parameters.AddWithValue("BAIRRO", txtBairro.Text);
-                    cmd.Parameters.AddWithValue("CIDADE", txtCidade.Text);
-                    cmd.Parameters.AddWithValue("ESTADO", cboEstado.Text);
-                    cmd.Parameters.AddWithValue("CELULAR", mskCelular.Text);
-                    try
-                    {
-                        con.Open();
-                        if (cmd.ExecuteNonQuery() > -1)
-                        {
-                            lblMensagem.Visible = true;
-                            lblMensagem.Text = "Conta cadastrada com sucesso!";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        lblMensagem.Text = "Erro ao cadastrar conta.\n" + ex.Message;
-                    }
-                    finally
-                    {
-                        con.Close();
-                    }
-                }
-            }
+            //string ConexaoDATABASE = Properties.Settings.Default.conexaoDB;
+            string ConexaoDATABASE = Agenda.Properties.Settings.Default.conexaoDB;
+            //Negocio.clAcessoDB();
         }
 
         private void PesquisarCEP(string CEP)
@@ -102,6 +75,11 @@ namespace CadastroDeCliente
             {
                 MessageBox.Show("CEP não Encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void frmAgenda_Load(object sender, EventArgs e)
+        {
+
         }
     }   
 }

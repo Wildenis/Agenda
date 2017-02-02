@@ -125,6 +125,7 @@
             "SE",
             "TO"});
             this.cboEstado.Location = new System.Drawing.Point(459, 133);
+            this.cboEstado.MaxLength = 2;
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(42, 21);
             this.cboEstado.TabIndex = 8;
@@ -217,7 +218,7 @@
             // txtNumeroCasa
             // 
             this.txtNumeroCasa.Location = new System.Drawing.Point(530, 90);
-            this.txtNumeroCasa.MaxLength = 6;
+            this.txtNumeroCasa.MaxLength = 5;
             this.txtNumeroCasa.Name = "txtNumeroCasa";
             this.txtNumeroCasa.Size = new System.Drawing.Size(62, 20);
             this.txtNumeroCasa.TabIndex = 5;
@@ -265,6 +266,7 @@
             // 
             this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Location = new System.Drawing.Point(85, 41);
+            this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(507, 20);
             this.txtNome.TabIndex = 1;
@@ -382,6 +384,7 @@
             this.Name = "frmAgenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agenda de Contatos";
+            this.Load += new System.EventHandler(this.frmAgenda_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmAgenda_KeyPress);
             this.grpDadosClient.ResumeLayout(false);
             this.grpDadosClient.PerformLayout();
