@@ -42,7 +42,22 @@ namespace Negocio
             strQuery.Append(" ) ");
 
             strQuery.Append(" VALUES ( ");
-            strQuery.Append("");
+            strQuery.Append(" '" + cliNome + "'");
+            strQuery.Append(", '" + cliEndereco + "'");
+            strQuery.Append(", '" + cliNumero + "'");
+            strQuery.Append(", '" + cliBairro + "'");
+            strQuery.Append(", '" + cliCidade + "'");
+            strQuery.Append(", '" + cliEstado + "'");
+            strQuery.Append(", '" + cliCEP + "'");
+            strQuery.Append(", '" + cliCelular + "'");
+
+            strQuery.Append(" ); ");
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutarComando(strQuery.ToString());
+
 
         }
 

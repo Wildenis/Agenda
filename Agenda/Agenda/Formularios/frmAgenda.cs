@@ -51,9 +51,25 @@ namespace CadastroDeCliente
             {
                 errErro.SetError(lblNome, "");
             }
-            //string ConexaoDATABASE = Properties.Settings.Default.conexaoDB;
-            string ConexaoDATABASE = Agenda.Properties.Settings.Default.conexaoDB;
-            //Negocio.clAcessoDB();
+
+            //instancia a classe de negócio
+            clClientes clClientes = new clClientes();
+
+            //carrega as propriedades
+            clClientes.cliNome = txtNome.Text;
+            clClientes.cliEndereco = txtEndereco.Text;
+            clClientes.cliNumero = txtNumeroCasa.Text;
+            clClientes.cliBairro = txtBairro.Text;
+            clClientes.cliCidade = txtCidade.Text;
+            clClientes.cliEstado = cboEstado.Text;
+            clClientes.cliCEP = mskCEP.Text;
+            clClientes.cliCelular = mskCelular.Text;
+
+            //variável com a string de conexão com o banco de dados
+            clClientes.banco = Agenda.Properties.Settings.Default.conexaoDB;
+
+            //chama o método gravar
+            clClientes.Gravar();
         }
 
         private void PesquisarCEP(string CEP)
