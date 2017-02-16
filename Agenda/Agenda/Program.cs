@@ -16,6 +16,8 @@ namespace CadastroDeCliente
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Agenda.Formularios.frmHome());
+            //Application.Run(new Agenda.Formularios.frmProdutos());
             Application.Run(new frmAgenda());
         }
     }

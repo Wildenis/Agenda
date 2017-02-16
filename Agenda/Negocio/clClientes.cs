@@ -46,7 +46,7 @@ namespace Negocio
             strQuery.Append(", '" + cliEndereco + "'");
             strQuery.Append(", '" + cliNumero + "'");
             strQuery.Append(", '" + cliBairro + "'");
-            strQuery.Append(", '" + cliCidade + "'");
+            strQuery.Append(", N'" + cliCidade + "'");
             strQuery.Append(", '" + cliEstado + "'");
             strQuery.Append(", '" + cliCEP + "'");
             strQuery.Append(", '" + cliCelular + "'");
@@ -61,5 +61,46 @@ namespace Negocio
 
         }
 
+        public void Alterar()
+        {
+            StringBuilder strQuery = new StringBuilder();
+            //montagem do update
+            strQuery.Append(" UPDATE tbClientes");
+
+            strQuery.Append(" SET ");
+
+            strQuery.Append(" cliNome = '" + cliNome + "'");
+            strQuery.Append(", cliEndereco = '" + cliEndereco + "'");
+            strQuery.Append(", cliNumero = '" + cliNumero + "'");
+            strQuery.Append(", cliBairro = '" + cliBairro + "'");
+            strQuery.Append(", cliCidade = '" + cliCidade + "'");
+            strQuery.Append(", cliEstado = '" + cliEstado + "'");
+            strQuery.Append(", cliCEP = '" + cliCEP + "' ");
+            strQuery.Append(", cliCelular = '" + cliCelular + "' ");
+
+            strQuery.Append(" WHERE");
+
+            strQuery.Append(" cliCodigo = " + cliCodigo);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutarComando(strQuery.ToString());
+        }
+
+        public void Excluir()
+        {
+            StringBuilder strQuery = new StringBuilder();
+
+            //montagem do delete
+            strQuery.Append(" DELETE FROM tbClientes ");
+            strQuery.Append(" WHERE ");
+            strQuery.Append(" cliCodigo = " + cliCodigo);
+
+            //instancia a classe clAcessoDB e executa o comando
+            clAcessoDB clAcessoDB = new clAcessoDB();
+            clAcessoDB.vConexao = banco;
+            clAcessoDB.ExecutarComando(strQuery.ToString());
+        }
     }
 }
